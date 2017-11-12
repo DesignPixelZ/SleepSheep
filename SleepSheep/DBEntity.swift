@@ -8,17 +8,15 @@
 
 import Foundation
 
-public protocol DBEntity {
-    static var entityName:String {get}
-    var collume:[String:MUDBMetaType] {get}
-    var primary:[String:MUDBMetaType] {get}
-    init()
-}
-extension DBEntity{
-    static var entityName:String {
+open class DBEntity{
+    public required init() {
+        
+    }
+    public func result(info:[String:Any]){}
+    public static var entityName:String {
         return "\(self)"
     }
-    var collume:[String:MUDBMetaType] {
+    public var collume:[String:MUDBMetaType] {
         let mirr = Mirror(reflecting: self)
         return mirr.children.filter { (child) -> Bool in
             if (child.label != nil && child.value is MUDBMetaType){
@@ -34,11 +32,19 @@ extension DBEntity{
         }
         
     }
-    var primary:[String:MUDBMetaType] {
+    public var primary:[String:MUDBMetaType] {
         return self.collume.filter({$0.value.pk}).reduce([:]) { (last, current) -> [String:MUDBMetaType] in
             var temp = last
             temp[current.0] = current.1
             return temp
         }
     }
+}
+public struct DBTableColumeStruct {
+    var cid:Int32
+    var name:String
+    var type:String
+    var notnull:Bool
+    var defaultValue:String?
+    var pk:Bool
 }

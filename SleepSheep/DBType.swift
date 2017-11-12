@@ -13,12 +13,12 @@ public enum MUOriginType:String{
     case integer = "integer"        // Int64
     case real = "real"              //Double
     case blob = "blob"              //Data
-    case datetime = "datatime"      //Date
+    case datetime = "datetime"      //Date
 }
 
 
 public protocol MUDBMetaType{
-    var type:String {get}
+    var type:MUOriginType {get}
     var notnull:Bool{get}
     var unique:Bool {get}
     var `default`:String? {get}
@@ -27,7 +27,7 @@ public protocol MUDBMetaType{
 }
 extension MUDBMetaType{
     var sqlTypeString:String{
-        return "\(type)\(notnull ? " not null" :"")\(unique ? " unique":"")\(`default` != nil ? " default '\(`default`!)'" :"")"
+        return "\(self.type.rawValue)\(notnull ? " not null" :"")\(unique ? " unique":"")\(`default` != nil ? " default '\(`default`!)'" :"")"
     }
 }
 public protocol MUContent{
@@ -56,15 +56,15 @@ public struct DBType<T:MUContent>:MUDBMetaType{
     
     public var notnull: Bool
     
-    public var type: String{
-        return T.originType.rawValue
+    public var type: MUOriginType{
+        return T.originType
     }
     
     var value:T?
     public init(pk:Bool = false){
         self.pk = pk
         self.unique = false
-        self.notnull = true
+        self.notnull = pk
         self.default = nil
         self.value = nil
     }
@@ -74,6 +74,9 @@ public struct DBType<T:MUContent>:MUDBMetaType{
         self.notnull = notnull
         self.default = nil
         self.value = nil
+    }
+    var keyPath:WritableKeyPath<DBType<T>,Any?>{
+        return \DBType<T>.origin
     }
 }
 
@@ -273,5 +276,18 @@ extension Date:MUContent{
 
     public static var originType: MUOriginType {
         return .datetime
+    }
+}
+extension Bool:MUContent{
+    public static var originType: MUOriginType {
+        return .integer
+    }
+    
+    public static func translateToOrigin(v: Bool) -> Any {
+        return Int64(v ? 1 : 0)
+    }
+    
+    public static func parseFromOrigin(origin: Any) -> Bool {
+        return (origin as! Int64) > 0 ? true : false
     }
 }

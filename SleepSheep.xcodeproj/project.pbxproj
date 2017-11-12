@@ -16,7 +16,6 @@
 		B9BD28481FB5AA910031DF4F /* DBEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BD28431FB5AA910031DF4F /* DBEntity.swift */; };
 		B9BD28491FB5AA910031DF4F /* DBSQLGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BD28441FB5AA910031DF4F /* DBSQLGenerator.swift */; };
 		B9BD284A1FB5AA910031DF4F /* DBType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BD28451FB5AA910031DF4F /* DBType.swift */; };
-		B9BD284B1FB5AA910031DF4F /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BD28461FB5AA910031DF4F /* main.swift */; };
 		B9BD284C1FB5AA910031DF4F /* MUDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BD28471FB5AA910031DF4F /* MUDataBase.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,7 +32,6 @@
 		B9BD28431FB5AA910031DF4F /* DBEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBEntity.swift; sourceTree = "<group>"; };
 		B9BD28441FB5AA910031DF4F /* DBSQLGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBSQLGenerator.swift; sourceTree = "<group>"; };
 		B9BD28451FB5AA910031DF4F /* DBType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBType.swift; sourceTree = "<group>"; };
-		B9BD28461FB5AA910031DF4F /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		B9BD28471FB5AA910031DF4F /* MUDataBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MUDataBase.swift; sourceTree = "<group>"; };
 		DC3C985E49022F24EFF8096D /* Pods_SleepSheep.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SleepSheep.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -105,7 +103,6 @@
 				B9BD28431FB5AA910031DF4F /* DBEntity.swift */,
 				B9BD28441FB5AA910031DF4F /* DBSQLGenerator.swift */,
 				B9BD28451FB5AA910031DF4F /* DBType.swift */,
-				B9BD28461FB5AA910031DF4F /* main.swift */,
 				B9BD28471FB5AA910031DF4F /* MUDataBase.swift */,
 			);
 			name = DB;
@@ -141,11 +138,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0910;
 				ORGANIZATIONNAME = yyk;
 				TargetAttributes = {
 					B9BD282C1FB5AA5B0031DF4F = {
 						CreatedOnToolsVersion = 8.3.3;
+						LastSwiftMigration = 0910;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -236,7 +234,6 @@
 			files = (
 				B9BD284A1FB5AA910031DF4F /* DBType.swift in Sources */,
 				B9BD28491FB5AA910031DF4F /* DBSQLGenerator.swift in Sources */,
-				B9BD284B1FB5AA910031DF4F /* main.swift in Sources */,
 				B9BD28331FB5AA5B0031DF4F /* ViewController.swift in Sources */,
 				B9BD28311FB5AA5B0031DF4F /* AppDelegate.swift in Sources */,
 				B9BD284C1FB5AA910031DF4F /* MUDataBase.swift in Sources */,
@@ -276,7 +273,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -284,7 +283,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -307,7 +310,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -326,7 +329,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -334,7 +339,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -351,7 +360,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -368,7 +377,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = d.SleepSheep;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -381,7 +391,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = d.SleepSheep;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -404,6 +415,7 @@
 				B9BD28411FB5AA5B0031DF4F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

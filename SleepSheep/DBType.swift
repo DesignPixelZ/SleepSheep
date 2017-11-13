@@ -31,9 +31,10 @@ extension MUDBMetaType{
     }
 }
 public protocol MUContent{
+    associatedtype result
     static var originType:MUOriginType {get}
     static func translateToOrigin(v:Self)->Any
-    static func parseFromOrigin(origin:Any)->Self
+    static func parseFromOrigin(origin:Any)->result
 }
 
 public struct DBType<T:MUContent>:MUDBMetaType{
@@ -47,7 +48,11 @@ public struct DBType<T:MUContent>:MUDBMetaType{
             return nil
         }
         set{
-            value = newValue as? T
+            if let nv = newValue{
+                value = T.parseFromOrigin(origin: nv) as? T
+            }else{
+                value = nil
+            }
         }
     }
     public var `default`: String?
@@ -81,6 +86,7 @@ public struct DBType<T:MUContent>:MUDBMetaType{
 }
 
 extension Int:MUContent{
+    public typealias result = Int
     public static func parseFromOrigin(origin: Any) -> Int {
         return Int(origin as! Int64)
     }
@@ -94,6 +100,7 @@ extension Int:MUContent{
     }
 }
 extension Int32:MUContent{
+    public typealias result = Int32
     public static func parseFromOrigin(origin: Any) -> Int32 {
         return Int32(origin as! Int64)
     }
@@ -107,6 +114,7 @@ extension Int32:MUContent{
     }
 }
 extension Int64:MUContent{
+    public typealias result = Int64
     public static func parseFromOrigin(origin: Any) -> Int64 {
         return origin as! Int64
     }
@@ -120,6 +128,7 @@ extension Int64:MUContent{
     }
 }
 extension Int16:MUContent{
+    public typealias result = Int16
     public static func parseFromOrigin(origin: Any) -> Int16 {
         return Int16(origin as! Int64)
     }
@@ -133,6 +142,7 @@ extension Int16:MUContent{
     }
 }
 extension Int8:MUContent{
+    public typealias result = Int8
     public static func parseFromOrigin(origin: Any) -> Int8 {
         return Int8(origin as! Int64)
     }
@@ -147,6 +157,7 @@ extension Int8:MUContent{
 }
 
 extension UInt:MUContent{
+    public typealias result = UInt
     public static func parseFromOrigin(origin: Any) -> UInt {
         return UInt(origin as! Int64)
     }
@@ -160,6 +171,7 @@ extension UInt:MUContent{
     }
 }
 extension UInt32:MUContent{
+    public typealias result = UInt32
     public static func parseFromOrigin(origin: Any) -> UInt32 {
         return UInt32(origin as! Int64)
     }
@@ -173,6 +185,7 @@ extension UInt32:MUContent{
     }
 }
 extension UInt64:MUContent{
+    public typealias result = UInt64
     public static func parseFromOrigin(origin: Any) -> UInt64 {
         return UInt64(origin as! Int64)
     }
@@ -186,6 +199,7 @@ extension UInt64:MUContent{
     }
 }
 extension UInt16:MUContent{
+    public typealias result = UInt16
     public static func parseFromOrigin(origin: Any) -> UInt16 {
         return UInt16(origin as! Int64)
     }
@@ -199,6 +213,7 @@ extension UInt16:MUContent{
     }
 }
 extension UInt8:MUContent{
+    public typealias result = UInt8
     public static func parseFromOrigin(origin: Any) -> UInt8 {
         return UInt8(origin as! Int64)
     }
@@ -212,6 +227,7 @@ extension UInt8:MUContent{
     }
 }
 extension String:MUContent{
+    public typealias result = String
     public static func parseFromOrigin(origin: Any) -> String {
         return origin as! String
     }
@@ -225,6 +241,7 @@ extension String:MUContent{
     }
 }
 extension Double:MUContent{
+    public typealias result = Double
     public static func parseFromOrigin(origin: Any) -> Double {
         return origin as! Double
     }
@@ -240,6 +257,7 @@ extension Double:MUContent{
     
 }
 extension Float:MUContent{
+    public typealias result = Float
     public static func parseFromOrigin(origin: Any) -> Float {
         return Float(origin as! Double)
     }
@@ -253,6 +271,7 @@ extension Float:MUContent{
     }
 }
 extension Data:MUContent{
+    public typealias result = Data
     public static func parseFromOrigin(origin: Any) -> Data {
         return origin as! Data
     }
@@ -266,6 +285,7 @@ extension Data:MUContent{
     }
 }
 extension Date:MUContent{
+    public typealias result = Date
     public static func parseFromOrigin(origin: Any) -> Date {
         return origin as! Date
     }
@@ -279,6 +299,7 @@ extension Date:MUContent{
     }
 }
 extension Bool:MUContent{
+    public typealias result = Bool
     public static var originType: MUOriginType {
         return .integer
     }

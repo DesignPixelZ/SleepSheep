@@ -12,10 +12,16 @@ open class DBEntity{
     public required init() {
         
     }
+    /// 查询结果注入实体 (子类需要实现）
+    ///
+    /// - Parameter info: 查询结果字典
     public func result(info:[String:Any]){}
+    
+    /// 实体名
     public static var entityName:String {
         return "\(self)"
     }
+    /// 实体的字典
     public var collume:[String:MUDBMetaType] {
         let mirr = Mirror(reflecting: self)
         return mirr.children.filter { (child) -> Bool in
@@ -32,6 +38,7 @@ open class DBEntity{
         }
         
     }
+    /// 主键的字典
     public var primary:[String:MUDBMetaType] {
         return self.collume.filter({$0.value.pk}).reduce([:]) { (last, current) -> [String:MUDBMetaType] in
             var temp = last
@@ -40,6 +47,7 @@ open class DBEntity{
         }
     }
 }
+/// 列结构
 public struct DBTableColumeStruct {
     var cid:Int32
     var name:String

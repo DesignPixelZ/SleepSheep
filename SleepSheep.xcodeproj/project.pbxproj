@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		28D3788F5C3FE3F345E384E8 /* Pods_SleepSheep.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC3C985E49022F24EFF8096D /* Pods_SleepSheep.framework */; };
+		A991507E1FB9CC6300B31BE5 /* DBExtensionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A991507D1FB9CC6300B31BE5 /* DBExtensionType.swift */; };
 		B9BD28311FB5AA5B0031DF4F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BD28301FB5AA5B0031DF4F /* AppDelegate.swift */; };
 		B9BD28331FB5AA5B0031DF4F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BD28321FB5AA5B0031DF4F /* ViewController.swift */; };
 		B9BD28361FB5AA5B0031DF4F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9BD28341FB5AA5B0031DF4F /* Main.storyboard */; };
@@ -16,12 +17,13 @@
 		B9BD28481FB5AA910031DF4F /* DBEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BD28431FB5AA910031DF4F /* DBEntity.swift */; };
 		B9BD28491FB5AA910031DF4F /* DBSQLGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BD28441FB5AA910031DF4F /* DBSQLGenerator.swift */; };
 		B9BD284A1FB5AA910031DF4F /* DBType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BD28451FB5AA910031DF4F /* DBType.swift */; };
-		B9BD284C1FB5AA910031DF4F /* MUDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BD28471FB5AA910031DF4F /* MUDataBase.swift */; };
+		B9BD284C1FB5AA910031DF4F /* MUDataBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BD28471FB5AA910031DF4F /* MUDataBaseManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		5ABFBA4556A3456CB32F3D7D /* Pods-SleepSheep.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SleepSheep.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SleepSheep/Pods-SleepSheep.debug.xcconfig"; sourceTree = "<group>"; };
 		5EE877BBDB266944FE1632DE /* Pods-SleepSheep.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SleepSheep.release.xcconfig"; path = "Pods/Target Support Files/Pods-SleepSheep/Pods-SleepSheep.release.xcconfig"; sourceTree = "<group>"; };
+		A991507D1FB9CC6300B31BE5 /* DBExtensionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBExtensionType.swift; sourceTree = "<group>"; };
 		B9BD282D1FB5AA5B0031DF4F /* SleepSheep.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SleepSheep.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9BD28301FB5AA5B0031DF4F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B9BD28321FB5AA5B0031DF4F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -32,7 +34,7 @@
 		B9BD28431FB5AA910031DF4F /* DBEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBEntity.swift; sourceTree = "<group>"; };
 		B9BD28441FB5AA910031DF4F /* DBSQLGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBSQLGenerator.swift; sourceTree = "<group>"; };
 		B9BD28451FB5AA910031DF4F /* DBType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBType.swift; sourceTree = "<group>"; };
-		B9BD28471FB5AA910031DF4F /* MUDataBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MUDataBase.swift; sourceTree = "<group>"; };
+		B9BD28471FB5AA910031DF4F /* MUDataBaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MUDataBaseManager.swift; sourceTree = "<group>"; };
 		DC3C985E49022F24EFF8096D /* Pods_SleepSheep.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SleepSheep.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -103,7 +105,8 @@
 				B9BD28431FB5AA910031DF4F /* DBEntity.swift */,
 				B9BD28441FB5AA910031DF4F /* DBSQLGenerator.swift */,
 				B9BD28451FB5AA910031DF4F /* DBType.swift */,
-				B9BD28471FB5AA910031DF4F /* MUDataBase.swift */,
+				B9BD28471FB5AA910031DF4F /* MUDataBaseManager.swift */,
+				A991507D1FB9CC6300B31BE5 /* DBExtensionType.swift */,
 			);
 			name = DB;
 			sourceTree = "<group>";
@@ -236,7 +239,8 @@
 				B9BD28491FB5AA910031DF4F /* DBSQLGenerator.swift in Sources */,
 				B9BD28331FB5AA5B0031DF4F /* ViewController.swift in Sources */,
 				B9BD28311FB5AA5B0031DF4F /* AppDelegate.swift in Sources */,
-				B9BD284C1FB5AA910031DF4F /* MUDataBase.swift in Sources */,
+				A991507E1FB9CC6300B31BE5 /* DBExtensionType.swift in Sources */,
+				B9BD284C1FB5AA910031DF4F /* MUDataBaseManager.swift in Sources */,
 				B9BD28481FB5AA910031DF4F /* DBEntity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

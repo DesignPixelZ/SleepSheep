@@ -9,15 +9,12 @@
 import UIKit
 
 class p: DBEntity {
-    var a = DBType<String>()
-    var b = DBType<Float>(pk: true)
-    var t = DBType<Int>(pk:true)
-    var c = DBType<Int>()
+
+    var x = DBType<Int>(pk: true)
+    var i = DBType<UIImage>()
     override func result(info: [String : Any]) {
-        self.a.origin = info["a"]
-        self.b.origin = info["b"]
-        self.c.origin = info["c"]
-        self.t.origin = info["t"]
+        self.x.origin = info["x"]
+        self.i.origin = info["i"]
     }
     public required init() {super.init()}
 }
@@ -27,14 +24,14 @@ class ViewController: UIViewController {
     let m = MUDataBaseManager(DBName: "message")
     override func viewDidLoad() {
         super.viewDidLoad()
-        m.create(entityClass: p.self)
-        let te = p()
-        te.a.value = "sds"
-        te.b.value = 1.11
-        te.t.value = 10
-        te.c.value = 10000
-        try! m.insertUpdate(entity: te)
-        print(m.select(entityClass: p.self, condition: nil, values: []))        
+//        try! m .createEntity(entity: p.self)
+//        let a = p()
+//        a.x.value = 10
+//        a.i.value = #imageLiteral(resourceName: "IMG_1342")
+//        try! m.insert(entity: a)
+        
+        let q = m.select(entityClass: p.self, condition: nil, values: [])
+        self.view.layer.contents = q[0].i.value?.cgImage
     }
 
     override func didReceiveMemoryWarning() {

@@ -47,11 +47,6 @@ class DBSQLGenerator {
     ///   - new: 列原始类型
     /// - Returns: sql
     class func addCollume(entity:DBEntity.Type ,name:String,new:MUOriginType)->String{
-        let a = entity.init()
-        if (a.collume.contains(where: {$0.key == name})){
-            print("列已存在")
-            return ""
-        }
         return "alter table \(entity.entityName) add column \(name) \(new.rawValue)"
     }
     /// 复制表数据

@@ -12,9 +12,11 @@ class p: DBEntity {
 
     var x = DBType<Int>(pk: true)
     var i = DBType<UIImage>()
+    var pp = DBType<String>()
     override func result(info: [String : Any]) {
         self.x.origin = info["x"]
         self.i.origin = info["i"]
+        self.pp.origin = info["k"]
     }
     public required init() {super.init()}
 }
@@ -26,7 +28,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         try! m .createEntity(entity: p.self)
         let a = p()
-        a.x.value = 10
+        a.x.value = 90
+        a.pp.value = nil
         a.i.value = #imageLiteral(resourceName: "IMG_1342")
         try! m.insertUpdate(entity: a)
         

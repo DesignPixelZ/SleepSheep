@@ -24,11 +24,11 @@ class ViewController: UIViewController {
     let m = MUDataBaseManager(DBName: "message")
     override func viewDidLoad() {
         super.viewDidLoad()
-//        try! m .createEntity(entity: p.self)
-//        let a = p()
-//        a.x.value = 10
-//        a.i.value = #imageLiteral(resourceName: "IMG_1342")
-//        try! m.insert(entity: a)
+        try! m .createEntity(entity: p.self)
+        let a = p()
+        a.x.value = 10
+        a.i.value = #imageLiteral(resourceName: "IMG_1342")
+        try! m.insertUpdate(entity: a)
         
         let q = m.select(entityClass: p.self, condition: nil, values: [])
         self.view.layer.contents = q[0].i.value?.cgImage

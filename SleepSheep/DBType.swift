@@ -33,7 +33,7 @@ extension MUDBMetaType{
 public protocol MUContent{
     associatedtype result
     static var originType:MUOriginType {get}
-    static func translateToOrigin(v:Self)->Any
+    func translateToOrigin()->Any
     static func parseFromOrigin(origin:Any)->result
 }
 
@@ -43,7 +43,7 @@ public struct DBType<T:MUContent>:MUDBMetaType{
     public var origin: Any?{
         get{
             if let ov = self.value{
-                return T.translateToOrigin(v: ov)
+                return ov.translateToOrigin()
             }
             return nil
         }
@@ -91,8 +91,8 @@ extension Int:MUContent{
         return Int(origin as! Int64)
     }
 
-    public static func translateToOrigin(v: Int) -> Any {
-        return v
+    public func translateToOrigin() -> Any {
+        return Int64(self)
     }
 
     public static var originType: MUOriginType {
@@ -105,8 +105,8 @@ extension Int32:MUContent{
         return Int32(origin as! Int64)
     }
 
-    public static func translateToOrigin(v: Int32) -> Any {
-        return v
+    public func translateToOrigin() -> Any {
+        return Int64(self)
     }
     
     public static var originType: MUOriginType {
@@ -119,8 +119,8 @@ extension Int64:MUContent{
         return origin as! Int64
     }
 
-    public static func translateToOrigin(v: Int64) -> Any {
-        return v
+    public func translateToOrigin() -> Any {
+        return self
     }
     
     public static var originType: MUOriginType {
@@ -133,8 +133,8 @@ extension Int16:MUContent{
         return Int16(origin as! Int64)
     }
 
-    public static func translateToOrigin(v: Int16) -> Any {
-        return v
+    public func translateToOrigin() -> Any {
+        return Int64(self)
     }
     
     public static var originType: MUOriginType {
@@ -147,8 +147,8 @@ extension Int8:MUContent{
         return Int8(origin as! Int64)
     }
 
-    public static func translateToOrigin(v: Int8) -> Any {
-        return v
+    public func translateToOrigin() -> Any {
+        return Int64(self)
     }
     
     public static var originType: MUOriginType {
@@ -162,8 +162,8 @@ extension UInt:MUContent{
         return UInt(origin as! Int64)
     }
 
-    public static func translateToOrigin(v: UInt) -> Any {
-        return v
+    public func translateToOrigin() -> Any {
+        return Int64(self)
     }
     
     public static var originType: MUOriginType {
@@ -176,8 +176,8 @@ extension UInt32:MUContent{
         return UInt32(origin as! Int64)
     }
 
-    public static func translateToOrigin(v: UInt32) -> Any {
-        return v
+    public func translateToOrigin() -> Any {
+        return Int64(self)
     }
     
     public static var originType: MUOriginType {
@@ -190,8 +190,8 @@ extension UInt64:MUContent{
         return UInt64(origin as! Int64)
     }
 
-    public static func translateToOrigin(v: UInt64) -> Any {
-        return v
+    public func translateToOrigin() -> Any {
+        return Int64(self)
     }
     
     public static var originType: MUOriginType {
@@ -204,8 +204,8 @@ extension UInt16:MUContent{
         return UInt16(origin as! Int64)
     }
 
-    public static func translateToOrigin(v: UInt16) -> Any {
-        return v
+    public func translateToOrigin() -> Any {
+        return Int64(self)
     }
     
     public static var originType: MUOriginType {
@@ -218,8 +218,8 @@ extension UInt8:MUContent{
         return UInt8(origin as! Int64)
     }
 
-    public static func translateToOrigin(v: UInt8) -> Any {
-        return v
+    public func translateToOrigin() -> Any {
+        return Int64(self)
     }
     
     public static var originType: MUOriginType {
@@ -232,8 +232,8 @@ extension String:MUContent{
         return origin as! String
     }
 
-    public static func translateToOrigin(v: String) -> Any {
-        return v
+    public func translateToOrigin() -> Any {
+        return self
     }
 
     public static var originType: MUOriginType {
@@ -246,8 +246,8 @@ extension Double:MUContent{
         return origin as! Double
     }
 
-    public static func translateToOrigin(v: Double) -> Any {
-        return v
+    public func translateToOrigin() -> Any {
+        return self
     }
 
     public static var originType: MUOriginType {
@@ -262,8 +262,8 @@ extension Float:MUContent{
         return Float(origin as! Double)
     }
 
-    public static func translateToOrigin(v: Float) -> Any {
-        return v
+    public func translateToOrigin() -> Any {
+        return Double(self)
     }
 
     public static var originType: MUOriginType {
@@ -276,8 +276,8 @@ extension Data:MUContent{
         return origin as! Data
     }
 
-    public static func translateToOrigin(v: Data) -> Any {
-        return v
+    public func translateToOrigin() -> Any {
+        return self
     }
 
     public static var originType: MUOriginType {
@@ -290,8 +290,8 @@ extension Date:MUContent{
         return origin as! Date
     }
 
-    public static func translateToOrigin(v: Date) -> Any {
-        return v
+    public func translateToOrigin() -> Any {
+        return self
     }
 
     public static var originType: MUOriginType {
@@ -304,8 +304,8 @@ extension Bool:MUContent{
         return .integer
     }
     
-    public static func translateToOrigin(v: Bool) -> Any {
-        return Int64(v ? 1 : 0)
+    public func translateToOrigin() -> Any {
+        return Int64(self ? 1 : 0)
     }
     
     public static func parseFromOrigin(origin: Any) -> Bool {
